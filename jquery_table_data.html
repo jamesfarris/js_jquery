@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Advanced 2 - Form - James</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<style>
+		input, label {
+			display: inline-block;
+			margin: 10px;
+			}
+	
+		div {
+			background: #cfcfcf;
+			padding: 10px;
+			}
+	
+		table tbody tr:first-child {
+			color: #999999;
+			font-style: italic;
+			}
+	
+		table th {
+			text-align:left;
+			}
+
+	</style>
+	<script>
+		$(document).ready(function(){
+			$('form').submit(function(){
+				var fname = $('#fname').val();
+				var lname = $('#lname').val();
+				var email = $('#email').val();
+				var phone = $('#phone').val();
+				var serial = $(this).serialize();
+
+				$('#my-table').append('<tr><td>' + fname + '</td><td>' + lname + '</td><td>' + email + '</td><td>' + phone + '</td></tr>');
+				$('p.serial span').text(serial);
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="theform">
+		<form id="input-info" action="">
+			<label for="fname">First Name</label><input type="text" name="fname" id="fname">
+			<label for="lname">Last Name</label><input type="text" name="lname" id="lname">
+			<label for="email">Email Address</label><input type="text" name="email" id="email">
+			<label for="phone">Phone Number</label><input type="text" name="phone" id="phone">
+			<input type="submit" value="ADD TO TABLE">
+		</form>
+		<p class="serial">Serialize Info: <span></span></p>
+	</div>
+	<div id="thetable">
+		<table id="my-table" width="100%">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email Address</th>
+					<th>Contact #</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Jon</td>
+					<td>Doe</td>
+					<td>myemail@place.com</td>
+					<td>408-555-1212</td>
+				</tr>
+			</tbody>
+		</table>
+ 	</div>
+</body>
+</html>
